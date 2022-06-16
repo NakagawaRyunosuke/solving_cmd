@@ -1,17 +1,76 @@
-const EPS = 0.0001; // constは定数の定義
+//DOMから値の取得
+//原関数取得
+let funcFlag1 = 0;
+let graph1 = null;
+let pointA = null;
+let pointB = null;
+let lineA = null;
+let lineB = null;
+let result1 = null;
+
+$("#NI_btn1").click(function() {
+  board1.removeObject(graph1);
+  funcFlag1 = 1;
+  graph1 = board1.create('functiongraph', [func_y1, -50, 50]);  
+});
+
+$("#NI_btn2").click(function() {
+  board1.removeObject(graph1);
+  funcFlag1 = 2;
+  graph1 = board1.create('functiongraph', [func_y1, -50, 50]);  
+});
+
+$("#NI_btn3").click(function() {
+  board1.removeObject(graph1);
+  funcFlag1 = 3;  
+  graph1 = board1.create('functiongraph', [func_y1, -50, 50]);  
+});
+
+//a,b取得
+let a = 0.0,
+  b = 0.0;
+$("#NI_aBtn").click(function(){
+  a = Number($("#NI_aNum").val());
+});
+
+$("#NI_bBtn").click(function(){
+  b = Number($("#NI_bNum").val());
+});
+
+//Graph1描画
+let board1 = JXG.JSXGraph.initBoard('plot1', {
+  boundingbox: [ -31, 31, 31, -31],  // 領域の座標[左、上、右、下]
+  axis: true,  // 軸を表示する
+  showNavigation: false,  // ナビゲーションボタンを表示しない
+  showCopyright: false    // コピーライト文字列を表示しない
+});
+
+const text_css1 = 'font-family: "Times New Roman", Times, "serif"; font-style: italic';
+board1.create('text', [29, 2, 'x'],{ fontSize: 16, cssStyle: text_css1 });
+board1.create('text', [2, 30, 'y'],{ fontSize: 16, cssStyle: text_css1 });
+
+
+const EPS1 = 0.0001; // constは定数の定義
 
 /**
  * 2分法による根の計算
  */
-function main() {
-  let a = 0.0,
-    b = 1.0; // 初期値
-
-  console.log("x^3 + x - 1 の2分法による数値計算");
-  console.log("初期値 a=" + a);
-  console.log("初期値 b=" + b);
+function main1() {
+  if(funcFlag1 == 0){
+    alert("原関数を定義してください");
+    return;
+  }
+  board1.removeObject(pointA);
+  board1.removeObject(pointB);
+  board1.removeObject(lineA);
+  board1.removeObject(lineB);
+  board1.removeObject(result1);
+  pointA = board1.create('point', [a,3.0], {name: 'a',face:''});
+  lineA = board1.create("line",[[a,-31.0],[a,31.0]],{strokeColor: '#ff6600'});
+  pointB = board1.create('point', [b,3.0], {name: 'b',face:""});
+  lineB = board1.create("line",[[b,-31.0],[b,31.0]],{strokeColor: '#ff6600'});
   let x = nibun(a, b); // 解
-  console.log("近似解 x = " + x);
+  result1 = board1.create('point', [x,0.0], {name: 'X',attractToGrid: true});
 }
 
 /**
@@ -22,13 +81,15 @@ function main() {
  */
 function nibun(a, b) {
   let c;
-
   do {
     c = (a + b) / 2.0; // 2分計算
     console.log(c);
-    if (func_y(c) * func_y(a) < 0) b = c; // 式(1.2)
-    else a = c; // 式(1.3)
-  } while (Math.abs(a - b) > EPS); // 収束判別　式(1.4)の変形
+    if (func_y1(c) * func_y1(a) < 0) {
+      b = c; // 式(1.2)
+    }else {
+      a = c; // 式(1.3)
+    }
+  } while (Math.abs(a - b) > EPS1); // 収束判別　式(1.4)の変形
   return c;
 }
 
@@ -37,8 +98,23 @@ function nibun(a, b) {
  * @param {number} x X座標
  * @return {number} Y座標
  */
-function func_y(x) {
-  return Math.pow(x, 3.0) + x - 1.0;
+function func_y1(x) {
+  switch (funcFlag1) {
+    case 1:
+      return Math.pow(x,3)/20-3*x-5;
+    case 2:
+      return Math.pow(x,2)/10-x-10;
+    case 3:
+      return Math.pow(x/3,3)+x/5+5;
+    default:
+      return 0;
+  }
 }
 
-main();
+
+$("#NI_startBtn").click(function(){  
+  main1();
+});
+
+
+

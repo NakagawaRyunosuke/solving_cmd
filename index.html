@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二分法とニュートン法の体感</title>
+    <script src="nibun.js" defer></script>
+    <script src="newton.js" defer></script>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.1.0/jsxgraph.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.1.0/jsxgraphcore.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="contents">
+        <div id="inputWrapper">
+            <h1>コントローラー</h1>
+            <hr>
+            <div id="nibunInputs">
+                <p>↓原関数を選択↓</p>
+                <div>
+                    <button class="btns" id="NI_btn1">x^3/20-3x-5</button>
+                    <button class="btns" id="NI_btn2">x^2/10-x-10</button>
+                    <button class="btns" id="NI_btn3">(x/3)^3+x/5+5</button>
+                </div>
+                <div id="inputs">
+                    <div>
+                        <p>aの値:<span id="NI_aValue"></span></p>
+                        <input type="number" name="a" id="NI_aNum"><button id="NI_aBtn">確定</button>
+                    </div>
+                    
+                    <div>
+                        <p>bの値:<span id="NI_bValue"></span></p>
+                        <input type="number" name="b" id="NI_bNum"><button id="NI_bBtn">確定</button>
+                    </div>
+                </div>
+                <div>
+                    <button id="NI_startBtn" class="startBtn">開始</button>
+                </div>
+            </div>
+
+            <div id="newtonInputs" class="hidden">
+                <p>↓原関数を選択↓</p>
+                <div>
+                    <button class="btns" id="NE_btn1">x^3/20-3x-5</button>
+                    <button class="btns" id="NE_btn2">x^2/10-x-10</button>
+                    <button class="btns" id="NE_btn3">(x/3)^3+x/5+5</button>
+                </div>
+                <div id="inputs">
+                    <div>
+                        <p>aの値:<span id="NE_aValue"></span></p>
+                        <input type="number" name="a" id="NE_aNum"><button id="NE_aBtn">確定</button>
+                    </div>
+                </div>
+                <div>
+                    <button id="NE_startBtn" class="startBtn">開始</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="graphWrapper">
+            <div id="tab"><p id="nibun">二分法のグラフ</p><p id="newton">ニュートン法のグラフ</p></div>
+            <div class="nibunGraph">
+                <div id="plot1" class="graph"></div>
+            </div>
+            <div class="newtonGraph hidden">
+                <div id="plot2" class="graph"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

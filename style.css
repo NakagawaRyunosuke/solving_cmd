@@ -1,0 +1,62 @@
+#contents{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 100px;
+    text-align: center;
+}
+#inputWrapper{
+    padding: 50px 0;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.btns{
+    display: block;
+    margin: 20px auto;
+    width: 150px;
+    height: 50px;
+}
+.startBtn{
+    width: 150px;
+    height: 50px;
+}
+#inputs{
+    margin: 20px 0;
+}
+#inputs p{
+    margin-bottom: 0;
+    text-align: center;
+}
+.graph{
+    width: 500px;
+    height: 500px;
+}
+.hidden{
+    display: none;
+}
+#tab{
+    border-bottom: 2px solid black;
+    width: 293px;
+    margin-bottom: 0;
+    display: flex;
+}
+#nibun{
+    background-color: rgba(0, 0, 0, 0.296);
+    border-right: 2px solid black;
+    margin-bottom: 0;
+    padding: 0 5px;
+}
+#newton{
+    margin-bottom: 0;
+    padding: 0 5px;
+}
+@media screen and (max-width:860px) {
+    #inputWrapper h1{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:750px) {
+    #contents{
+        display: block;
+    }
+}
