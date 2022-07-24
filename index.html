@@ -16,47 +16,58 @@
 <body>
     <div id="contents">
         <div id="inputWrapper">
-            <h1>コントローラー</h1>
-            <hr>
-            <div id="nibunInputs">
-                <p>↓原関数を選択↓</p>
-                <div>
-                    <button class="btns" id="NI_btn1">x^3/20-3x-5</button>
-                    <button class="btns" id="NI_btn2">x^2/10-x-10</button>
-                    <button class="btns" id="NI_btn3">(x/3)^3+x/5+5</button>
-                </div>
-                <div id="inputs">
+            <div id="inputsArea">
+                <h1>コントローラー</h1>
+                <hr>
+                <div id="nibunInputs">
+                    <p>↓原関数を選択↓</p>
                     <div>
-                        <p>aの値:<span id="NI_aValue"></span></p>
-                        <input type="number" name="a" id="NI_aNum"><button id="NI_aBtn">確定</button>
+                        <button class="btns" id="NI_btn1">x^3+5x^2+10</button>
+                        <button class="btns" id="NI_btn2">x^2/10-x-2</button>
+                        <button class="btns" id="NI_btn3">(x/3)^3+x/5+5</button>
                     </div>
-                    
+                    <div id="inputs">
+                        <div>
+                            <p>aの値:<span id="NI_aValue"></span></p>
+                            <input type="number" name="a" id="NI_aNum"><button id="NI_aBtn">確定</button>
+                        </div>
+                        
+                        <div>
+                            <p>bの値:<span id="NI_bValue"></span></p>
+                            <input type="number" name="b" id="NI_bNum"><button id="NI_bBtn">確定</button>
+                        </div>
+                    </div>
                     <div>
-                        <p>bの値:<span id="NI_bValue"></span></p>
-                        <input type="number" name="b" id="NI_bNum"><button id="NI_bBtn">確定</button>
+                        <button id="NI_startBtn" class="startBtn">開始</button>
                     </div>
                 </div>
-                <div>
-                    <button id="NI_startBtn" class="startBtn">開始</button>
+
+                <div id="newtonInputs" class="hidden">
+                    <p>↓原関数を選択↓</p>
+                    <div>
+                        <button class="btns" id="NE_btn1">x^3+5x^2+10</button>
+                        <button class="btns" id="NE_btn2">x^2/10-x-2</button>
+                        <button class="btns" id="NE_btn3">(x/3)^3+x/5+5</button>
+                    </div>
+                    <div id="inputs">
+                        <div>
+                            <p>aの値:<span id="NE_aValue"></span></p>
+                            <input type="number" name="a" id="NE_aNum"><button id="NE_aBtn">確定</button>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="NE_startBtn" class="startBtn">開始</button>
+                    </div>
                 </div>
             </div>
 
-            <div id="newtonInputs" class="hidden">
-                <p>↓原関数を選択↓</p>
-                <div>
-                    <button class="btns" id="NE_btn1">x^3/20-3x-5</button>
-                    <button class="btns" id="NE_btn2">x^2/10-x-10</button>
-                    <button class="btns" id="NE_btn3">(x/3)^3+x/5+5</button>
-                </div>
-                <div id="inputs">
-                    <div>
-                        <p>aの値:<span id="NE_aValue"></span></p>
-                        <input type="number" name="a" id="NE_aNum"><button id="NE_aBtn">確定</button>
-                    </div>
-                </div>
-                <div>
-                    <button id="NE_startBtn" class="startBtn">開始</button>
-                </div>
+            <div id="resultArea1">
+                <h1>根の算出結果がここに表示されます</h1>
+                
+            </div>
+            <div id="resultArea2" class="hidden">
+                <h1>根の算出結果がここに表示されます</h1>
+                
             </div>
         </div>
 

@@ -48,6 +48,9 @@ const EPS2 = 0.0001; // 許容誤差
  * ニュートン法による根の計算
  */
 function main2() {
+  let parent2 = document.getElementById("resultArea2");
+  parent2.innerHTML = "";
+  let i = 1;
   a2 = firstA2;
   board2.removeObject(lineA2);
   board2.removeObject(pointA2);
@@ -61,8 +64,29 @@ function main2() {
   let b2;
   while (1) {
     b2 = a2 - func_y2(a2) / func_z(a2); // 式(1.9)
+    let newtonResult = document.createElement("div");
+    let countText2 = document.createElement("h4");
+    countText2.textContent = "〜"+i+"回目〜";
+    let domA2 = document.createElement("p");
+    let domB2 = document.createElement("p");
+    
+    if(i >= 2){
+      domA2.textContent = "a(前回の計算結果を初期値に変更): "+a2;
+    }else{
+      domA2.textContent = "a(初期値): "+a2;
+    }
+    
+    domB2.textContent = "a-(原関数)÷(原関数を微分したもの): "+b2;
+    newtonResult.appendChild(countText2);
+    newtonResult.appendChild(domA2);
+    newtonResult.appendChild(domB2);
+    document.getElementById("resultArea2").appendChild(newtonResult);
+
     if (Math.abs(a2 - b2) < EPS2) break;  // 収束判定
+    else if(i >= 50) break;
     else a2 = b2;
+    
+    i++;
   }
   result2 = board2.create('point', [b2,0.0], {name: 'X'});
 }
@@ -75,9 +99,9 @@ function main2() {
 function func_y2(x) {
   switch (funcFlag2) {
     case 1:
-      return Math.pow(x,3)/20-3*x-5;
+      return Math.pow(x,3)+Math.pow(x,2)*5+10;
     case 2:
-      return Math.pow(x,2)/10-x-10;
+      return Math.pow(x,2)/10-x-2;
     case 3:
       return Math.pow(x/3,3)+x/5+5;
     default:
@@ -93,7 +117,7 @@ function func_y2(x) {
 function func_z(x) {
   switch (funcFlag2) {
     case 1:
-      return 3*Math.pow(x,2)/20-3;
+      return 3*Math.pow(x,2)+2*x*5;
     case 2:
       return 2*x/10-1;
     case 3:

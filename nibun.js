@@ -80,15 +80,33 @@ function main1() {
  * @return {number} 近似解
  */
 function nibun(a, b) {
+  let parent = document.getElementById("resultArea1");
+  parent.innerHTML = "";
   let c;
+  let i = 1;
   do {
     c = (a + b) / 2.0; // 2分計算
     console.log(c);
+    let nibunResult = document.createElement("div");
+    let countText = document.createElement("h4");
+    countText.textContent = "〜"+i+"回目〜";
+    let domA = document.createElement("p");
+    domA.textContent = "a: "+a;
+    let domB = document.createElement("p");
+    domB.textContent = "b: "+b;
+    let domC = document.createElement("p");
+    domC.textContent = "二分点: "+c;
+    nibunResult.appendChild(countText);
+    nibunResult.appendChild(domA);
+    nibunResult.appendChild(domB);
+    nibunResult.appendChild(domC);
+    document.getElementById("resultArea1").appendChild(nibunResult);
     if (func_y1(c) * func_y1(a) < 0) {
       b = c; // 式(1.2)
     }else {
       a = c; // 式(1.3)
     }
+    i++;
   } while (Math.abs(a - b) > EPS1); // 収束判別　式(1.4)の変形
   return c;
 }
@@ -101,9 +119,9 @@ function nibun(a, b) {
 function func_y1(x) {
   switch (funcFlag1) {
     case 1:
-      return Math.pow(x,3)/20-3*x-5;
+      return Math.pow(x,3)+Math.pow(x,2)*5+10;
     case 2:
-      return Math.pow(x,2)/10-x-10;
+      return Math.pow(x,2)/10-x-2;
     case 3:
       return Math.pow(x/3,3)+x/5+5;
     default:

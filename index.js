@@ -1,6 +1,8 @@
 $("#nibun").click(function(){
     $(".nibunGraph").removeClass("hidden");
     $(".newtonGraph").addClass("hidden");
+    $("#resultArea2").addClass("hidden");
+    $("#resultArea1").removeClass("hidden");
     $("#nibunInputs").removeClass("hidden");
     $("#newtonInputs").addClass("hidden");
     $("#nibun").css("background-color","rgba(0, 0, 0, 0.296)");
@@ -10,6 +12,8 @@ $("#nibun").click(function(){
 $("#newton").click(function(){
     $(".newtonGraph").removeClass("hidden");
     $(".nibunGraph").addClass("hidden");
+    $("#resultArea2").removeClass("hidden");
+    $("#resultArea1").addClass("hidden");
     $("#newtonInputs").removeClass("hidden");
     $("#nibunInputs").addClass("hidden");
     $("#nibun").css("background-color","white");
